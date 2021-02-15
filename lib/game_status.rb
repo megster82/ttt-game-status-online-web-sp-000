@@ -28,11 +28,6 @@ def won?(board)
   end
 end
 
-
 def full?(board)
-  if board.full?
-    return true
-  else
-    return false
-  end
+  board.none? {| position | position == " "}
 end
