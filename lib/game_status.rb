@@ -1,49 +1,34 @@
 # Helper Method
+#position is taken if board index is not nil and not an empty space
 def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
+ !(board[index].nil? || board[index] == " ")
 end
 
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8], 
-  [2,4,6]
+  [0, 1, 2], #top row
+  [3, 4, 5], #middle row
+  [6, 7, 8], #botton row
+  [0, 3, 6], #top left row
+  [1, 4, 7], #top mid row
+  [2, 5, 8], #bot right row
+  [0, 4, 8], #left top to right bot diag
+  [6, 4, 2]  #left bot to top right diag
   ]
-  
+
+#we want to return the winning combination if there is one
+#return false otherwise
 def won?(board)
-  #we want to return the winning combination if there is one
-  #return false otherwise
-    WIN_COMBINATIONS.detect do | win_combination |
-    location1 = win_combination[0]
-    location2 = win_combination[1]
-    location3 = win_combination[2]
-    
-    board[location1] == board[location2] && board[location2] == board[location3] && board[location1] != " "
-  end
-end 
 
-def full?(board)
-  board.none? {| position | position == " "}
-end 
 
-def draw?(board)
-  full?(board) && !won?(board)
+
 end
 
-def over?(board)
-  won?(board) || draw?(board)
-end 
 
-def winner(board)
-  #board = ["O", " ", " ", " ", "O", " ", " ", " ", "O"]
-  win_combination = won?(board) 
-  if win_combination
-    winning_location = win_combination[0]
-  board[winning_location]
-end 
+def full?(board)
+  if board.full?
+    return true
+  else
+    return false
+  end
 end
