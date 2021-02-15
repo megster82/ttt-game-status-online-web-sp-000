@@ -31,3 +31,5 @@ end
 def full?(board)
   board.none? {| position | position == " "}
 end
+
+
