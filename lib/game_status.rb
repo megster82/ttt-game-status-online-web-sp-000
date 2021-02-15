@@ -19,9 +19,13 @@ WIN_COMBINATIONS = [
 #we want to return the winning combination if there is one
 #return false otherwise
 def won?(board)
-
-
-
+  WIN_COMBINATIONS.detect do | win_combo |
+    position1 = wincombo[0]
+    position2 = wincombo[1]
+    position3 = wincombo[2]
+    
+    board[position1] == board[position2] && board[position2] == board[position3] && board[position1] != " "
+  end
 end
 
 
